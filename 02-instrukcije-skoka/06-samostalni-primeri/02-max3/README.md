@@ -52,3 +52,8 @@ max3(4, 9, 2) = 9
 - `x`, `y`, `z` стижу у `edi`, `esi`, `edx`
 - у `eax` можемо прво ставити `x`, па га касније по потреби ажурирати
 - ово је добар пример за читање кода који има више кратких грана, али без `else` дела
+
+## Навигација
+
+- Претходно: [Apsolutna vrednost](../01-apsolutna_vrednost/README.md)
+- Следеће: [Prestupna godina](../03-prestupna_godina/README.md)

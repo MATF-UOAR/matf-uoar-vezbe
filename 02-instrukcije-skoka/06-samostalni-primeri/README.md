@@ -16,3 +16,8 @@
 - [Max3](./02-max3/README.md)
 - [Prestupna godina](./03-prestupna_godina/README.md)
 - [Sezona](./04-sezona/README.md)
+
+## Навигација
+
+- Претходно: [switch гранање](../05-switch/README.md)
+- Следеће: [Apsolutna vrednost](./01-apsolutna_vrednost/README.md)
