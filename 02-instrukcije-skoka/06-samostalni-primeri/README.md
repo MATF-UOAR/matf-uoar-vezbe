@@ -1,0 +1,23 @@
+# Самостални мини-примери
+
+Ова целина садржи четири кратка примера за самосталан рад после друге недеље.
+
+Идеја није да уводи нове концепте, већ да утврди:
+
+- `cmp` и условне скокове
+- више узастопних грана у једној функцији
+- употребу остатка при дељењу као услова
+- једноставан `switch` са груписаним `case` гранама
+- позив `puts` из асемблерске функције
+
+## Садржај
+
+- [Apsolutna vrednost](./01-apsolutna_vrednost/README.md)
+- [Max3](./02-max3/README.md)
+- [Prestupna godina](./03-prestupna_godina/README.md)
+- [Sezona](./04-sezona/README.md)
+
+## Навигација
+
+- Претходно: [switch гранање](../05-switch/README.md)
+- Следеће: [Apsolutna vrednost](./01-apsolutna_vrednost/README.md)
