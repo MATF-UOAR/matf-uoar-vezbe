@@ -154,4 +154,4 @@ g++ main.cpp suma_proizvod.s
 ## Навигација
 
 - Претходно: [НЗД](../01-nzd/README.md)
-- Следеће: [Ојлер](../03-ojler/README.md)
+- Следеће: [Сума парних бројева](../03-suma-parnih/README.md)

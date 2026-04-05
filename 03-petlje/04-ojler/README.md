@@ -132,6 +132,6 @@ g++ main.cpp ojler.s nzd.s
 
 ## Навигација
 
-- Претходно: [Сума](../02-suma/README.md)
-- Следеће: [Сума парних бројева](../04-suma-parnih/README.md)
+- Претходно: [Сума парних бројева](../03-suma-parnih/README.md)
+- Следеће: [Самостални мини-примери](../05-samostalni-primeri/README.md)
 - Горе: [Недеља 3](../README.md)
