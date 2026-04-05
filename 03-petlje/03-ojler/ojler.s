@@ -15,7 +15,7 @@ ojler:
     mov ecx, 1      # ecx = i
 for_petlja:
     cmp ecx, edi
-    je for_petlja_kraj
+    jae for_petlja_kraj
 
     # cuvamo vrednosti registara koji su
     # nam bitni na stek
@@ -31,7 +31,7 @@ for_petlja:
     call nzd        # eax = nzd(i, n)
 
     # vracanje starih vrednosti registara
-    pop rdi  # mozemo i add esp, 8 umesto pop 
+    pop rdi  # mozemo i add rsp, 8 umesto pop 
     pop rdi
     pop rcx
     pop r9

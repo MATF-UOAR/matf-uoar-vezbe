@@ -11,11 +11,9 @@ suma:
 
     mov eax, edi
     add edi, 1
-    mul edi     # eax = n * (n+1)
+    mul edi              # edx:eax = n * (n+1)
 
-    mov esi, 2
-    xor edx, edx
-    div esi     # eax = n * (n+1) / 2
+    shrd eax, edx, 1     # nizi 32 bita od (n * (n+1)) / 2
 
     leave
     ret
