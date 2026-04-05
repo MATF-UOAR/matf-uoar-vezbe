@@ -136,4 +136,5 @@ g++ main.cpp suma_parnih_loop.s
 ## Навигација
 
 - Претходно: [Ојлер](../03-ojler/README.md)
+- Следеће: [Самостални мини-примери](../05-samostalni-primeri/README.md)
 - Горе: [Недеља 3](../README.md)
