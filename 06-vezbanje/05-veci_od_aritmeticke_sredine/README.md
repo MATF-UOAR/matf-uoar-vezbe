@@ -8,7 +8,11 @@
 1 2 3 4 5
 1 2 3 16 25
 ```
-## Покретање
+## Превођење
 ```
 g++ main.cpp aritmeticka_sredina.s veci_od_aritmeticke_sredine.s
+```
+## Покретање
+```
+./a.out
 ```
