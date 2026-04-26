@@ -7,7 +7,11 @@
 55
 indeks: 10
 ```
-# Покретање
+# Превођење
 ```
 g++ main.cpp pripada_fibonaciju.s
+```
+## Покретање
+```
+./a.out
 ```
