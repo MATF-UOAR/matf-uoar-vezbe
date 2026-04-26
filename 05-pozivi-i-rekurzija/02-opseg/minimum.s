@@ -10,16 +10,16 @@
 minimum:
     enter 0, 0
 
-    mov eax, dword ptr [rdi]
+    mov eax, [rdi]
     mov ecx, 1
 
 for_petlja:
     cmp ecx, esi
     jge for_petlja_kraj
 
-    cmp dword ptr [rdi + 4 * rcx], eax
+    cmp [rdi + 4 * rcx], eax
     jge nije_manji
-    mov eax, dword ptr [rdi + 4 * rcx]
+    mov eax, [rdi + 4 * rcx]
 
 nije_manji:
     inc ecx

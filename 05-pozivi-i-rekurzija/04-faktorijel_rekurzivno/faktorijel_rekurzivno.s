@@ -9,7 +9,7 @@
 faktorijel_rekurzivno:
     enter 16, 0
 
-    mov dword ptr [rbp - 4], edi
+    mov [rbp - 4], edi
 
     cmp edi, 1
     ja rekurzivni_slucaj
@@ -21,7 +21,7 @@ faktorijel_rekurzivno:
 rekurzivni_slucaj:
     dec edi
     call faktorijel_rekurzivno
-    imul eax, dword ptr [rbp - 4]
+    imul dword ptr [rbp - 4]
 
     leave
     ret

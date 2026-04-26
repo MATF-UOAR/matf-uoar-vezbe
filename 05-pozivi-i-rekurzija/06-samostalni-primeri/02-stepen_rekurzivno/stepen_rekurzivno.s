@@ -10,7 +10,7 @@
 stepen_rekurzivno:
     enter 16, 0
 
-    mov dword ptr [rbp - 4], edi
+    mov [rbp - 4], edi
 
     cmp esi, 0
     jne rekurzivni_slucaj
@@ -22,7 +22,7 @@ stepen_rekurzivno:
 rekurzivni_slucaj:
     sub esi, 1
     call stepen_rekurzivno
-    imul eax, dword ptr [rbp - 4]
+    imul eax, [rbp - 4]
 
     leave
     ret

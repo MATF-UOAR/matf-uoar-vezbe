@@ -18,14 +18,14 @@ zbir_niza_rekurzivno:
     ret
 
 rekurzivni_slucaj:
-    mov eax, dword ptr [rdi]
-    mov dword ptr [rbp - 4], eax
+    mov eax, [rdi]
+    mov [rbp - 4], eax
 
     add rdi, 4
     sub esi, 1
     call zbir_niza_rekurzivno
 
-    add eax, dword ptr [rbp - 4]
+    add eax, [rbp - 4]
 
     leave
     ret

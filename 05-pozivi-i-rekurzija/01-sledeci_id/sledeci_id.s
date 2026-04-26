@@ -14,7 +14,7 @@ sledeci_id:
     enter 0, 0
 
     add dword ptr [rip + poslednji_id], 1
-    mov eax, dword ptr [rip + poslednji_id]
+    mov eax, [rip + poslednji_id]
 
     leave
     ret
