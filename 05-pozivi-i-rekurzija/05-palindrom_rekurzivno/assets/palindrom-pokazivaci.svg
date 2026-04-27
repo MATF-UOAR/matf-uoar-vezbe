@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="430" viewBox="0 0 960 430" role="img" aria-labelledby="title desc">
+  <title id="title">Померање показивача у рекурзивној провери палиндрома</title>
+  <desc id="desc">Показивачи levo и desno почињу на крајевима ниске radar и после једнаког пара карактера померају се ка средини.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#334155" />
+    </marker>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { font: 700 26px "DejaVu Sans", sans-serif; fill: #111827; }
+      .label { font: 700 18px "DejaVu Sans", sans-serif; fill: #111827; }
+      .text { font: 500 16px "DejaVu Sans", sans-serif; fill: #334155; }
+      .mono { font: 600 24px "DejaVu Sans Mono", monospace; fill: #0f172a; }
+      .small { font: 500 14px "DejaVu Sans", sans-serif; fill: #475569; }
+      .cell { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; rx: 8; }
+      .edge { fill: #e0f2fe; stroke: #0284c7; }
+      .middle { fill: #ecfccb; stroke: #65a30d; }
+      .arrow { stroke: #334155; stroke-width: 2.5; fill: none; marker-end: url(#arrow); }
+      .pointer { stroke: #f97316; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect class="bg" width="960" height="430" />
+  <text class="title" x="48" y="48">Рекурзивни палиндром: `levo` и `desno`</text>
+  <text class="text" x="48" y="78">Помоћна функција добија укључиве границе преосталог дела ниске и после једнаког пара иде ка средини.</text>
+
+  <text class="label" x="72" y="138">први позив: `palindrom_opseg(s, kraj - 1)`</text>
+  <rect class="cell edge" x="120" y="170" width="82" height="70" />
+  <rect class="cell" x="202" y="170" width="82" height="70" />
+  <rect class="cell middle" x="284" y="170" width="82" height="70" />
+  <rect class="cell" x="366" y="170" width="82" height="70" />
+  <rect class="cell edge" x="448" y="170" width="82" height="70" />
+  <text class="mono" x="148" y="215">r</text>
+  <text class="mono" x="230" y="215">a</text>
+  <text class="mono" x="312" y="215">d</text>
+  <text class="mono" x="394" y="215">a</text>
+  <text class="mono" x="476" y="215">r</text>
+  <path class="pointer" d="M161 156 V170" />
+  <text class="small" x="139" y="148">levo</text>
+  <path class="pointer" d="M489 156 V170" />
+  <text class="small" x="464" y="148">desno</text>
+  <text class="text" x="596" y="195">`*levo == *desno`</text>
+  <text class="text" x="596" y="224">померамо оба показивача</text>
+
+  <path class="arrow" d="M422 284 C390 314 326 314 292 284" />
+  <text class="small" x="322" y="326">ка средини</text>
+
+  <text class="label" x="72" y="366">следећи позив проверава унутрашњи опсег</text>
+  <rect class="cell" x="566" y="326" width="70" height="54" />
+  <rect class="cell edge" x="636" y="326" width="70" height="54" />
+  <rect class="cell middle" x="706" y="326" width="70" height="54" />
+  <rect class="cell edge" x="776" y="326" width="70" height="54" />
+  <rect class="cell" x="846" y="326" width="70" height="54" />
+  <text class="mono" x="589" y="362">r</text>
+  <text class="mono" x="659" y="362">a</text>
+  <text class="mono" x="729" y="362">d</text>
+  <text class="mono" x="799" y="362">a</text>
+  <text class="mono" x="869" y="362">r</text>
+  <path class="pointer" d="M671 312 V326" />
+  <text class="small" x="649" y="304">levo</text>
+  <path class="pointer" d="M811 312 V326" />
+  <text class="small" x="786" y="304">desno</text>
+</svg>
