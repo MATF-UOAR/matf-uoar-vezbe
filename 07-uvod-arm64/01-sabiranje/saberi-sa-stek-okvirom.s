@@ -2,7 +2,6 @@
 
 .align 2
 .global saberi
-.type saberi, %function
 
 // int saberi(int a, int b)
 // w0          w0     w1
@@ -19,6 +18,3 @@ saberi:
 
     ldp x29, x30, [sp], 32
     ret
-
-.size saberi, .-saberi
-.section .note.GNU-stack,"",@progbits
