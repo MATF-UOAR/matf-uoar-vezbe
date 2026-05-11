@@ -86,3 +86,8 @@ qemu-aarch64 -L /usr/aarch64-linux-gnu ./primer
 - **Дељивост са 4**: кратка битовска провера два најнижа бита
 
 Готове верзије су у [Самосталним примерима](./04-samostalni-primeri/README.md).
+
+## Навигација
+
+- Претходно: [Недеља 6](../06-vezbanje/README.md)
+- Следеће: [Прелаз са x86-64 на ARM64](./00-poredjenje-x86-64-i-arm64/README.md)
