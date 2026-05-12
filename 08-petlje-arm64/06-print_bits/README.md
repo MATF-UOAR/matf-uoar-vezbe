@@ -97,6 +97,6 @@ qemu-aarch64 ./print_bits
 
 ## Навигација
 
-- Претходно: [Secret](../04-secret/README.md)
-- Следеће: [Огледање битова](../06-mirror/README.md)
+- Претходно: [Secret](../05-secret/README.md)
+- Следеће: [Огледање битова](../07-mirror/README.md)
 - Горе: [Недеља 8](../README.md)
