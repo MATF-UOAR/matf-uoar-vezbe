@@ -83,4 +83,5 @@ qemu-aarch64 ./mirror
 ## Навигација
 
 - Претходно: [Испис битова](../06-print_bits/README.md)
+- Следеће: [Самостални мини-примери](../08-samostalni-primeri/README.md)
 - Горе: [Недеља 8](../README.md)
