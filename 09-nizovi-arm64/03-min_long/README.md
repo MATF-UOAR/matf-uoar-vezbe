@@ -98,5 +98,5 @@ qemu-aarch64 ./min_element
 ## Навигација
 
 - Претходно: [Максимум низа](../02-max_element/README.md)
-- Следеће: [Минимум и максимум](../04-minimax/README.md)
+- Следеће: [Минимум и максимум `short` вредности](../04-minimax/README.md)
 - Горе: [Недеља 9](../README.md)
