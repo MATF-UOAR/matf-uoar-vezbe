@@ -32,7 +32,7 @@ int zbir_niza_rekurzivno(int *a, int n) {
 
 ```asm
 ldr w2, [x0]
-str w2, [sp, #16]
+str w2, [sp]
 ```
 
 Пошто је елемент типа `int`, показивач на следећи елемент добија се
@@ -47,7 +47,7 @@ bl zbir_niza_rekurzivno
 Тек при одмотавању позива сачувани елемент се додаје суми остатка низа:
 
 ```asm
-ldr w1, [sp, #16]
+ldr w1, [sp]
 add w0, w0, w1
 ```
 

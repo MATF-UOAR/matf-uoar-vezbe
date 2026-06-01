@@ -6,40 +6,41 @@
 // int nadji_prvi(unsigned *a, int n, int (*pred)(unsigned))
 //  w0            x0           w1     x2
 nadji_prvi:
-    stp fp, lr, [sp, #-48]!
+    stp fp, lr, [sp, #-16]!
     mov fp, sp
+    sub sp, sp, #32
 
-    str x0, [sp, #16]       // a
-    str x2, [sp, #24]       // pred
-    str w1, [sp, #32]       // n
-    str wzr, [sp, #36]      // i = 0
+    stp x19, x20, [sp]
+    stp x21, x22, [sp, #16]
+
+    mov x19, x0             // a
+    mov w20, w1             // n
+    mov x21, x2             // pred
+    mov w22, #0             // i = 0
 
 petlja:
-    ldr w3, [sp, #36]
-    ldr w4, [sp, #32]
-    cmp w3, w4
+    cmp w22, w20
     b.ge nije_nadjen
 
-    ldr x4, [sp, #16]
-    ldr w0, [x4, w3, sxtw #2]
-    ldr x8, [sp, #24]
-    blr x8
+    ldr w0, [x19, x22, lsl #2]
+    blr x21
 
     cmp w0, #0
     b.ne nadjen
 
-    ldr w3, [sp, #36]
-    add w3, w3, #1
-    str w3, [sp, #36]
+    add w22, w22, #1
     b petlja
 
 nadjen:
-    ldr w0, [sp, #36]
+    mov w0, w22
     b kraj
 
 nije_nadjen:
     mov w0, #-1
 
 kraj:
-    ldp fp, lr, [sp], #48
+    ldp x21, x22, [sp, #16]
+    ldp x19, x20, [sp]
+    mov sp, fp
+    ldp fp, lr, [sp], #16
     ret

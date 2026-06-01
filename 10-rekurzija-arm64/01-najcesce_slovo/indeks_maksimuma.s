@@ -17,7 +17,7 @@ petlja:
     cmp w4, w1
     b.hs kraj
 
-    ldr w5, [x0, w4, uxtw #2]
+    ldr w5, [x0, x4, lsl #2]
     cmp w5, w3
     b.ls nastavak
 

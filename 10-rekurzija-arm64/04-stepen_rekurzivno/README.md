@@ -40,8 +40,8 @@ unsigned stepen_rekurzivno(unsigned a, unsigned n) {
 које нам могу затребати чувамо у стек оквиру:
 
 ```asm
-str w0, [sp, #16]
-str w1, [sp, #20]
+str w0, [sp]
+str w1, [sp, #4]
 ```
 
 Базни случај `n == 0` враћа `1`. У рекурзивном случају дељење експонента
@@ -62,10 +62,10 @@ mul w0, w0, w0
 производ множимо још једном базом:
 
 ```asm
-ldr w1, [sp, #20]
+ldr w1, [sp, #4]
 tst w1, #1
 b.eq kraj
-ldr w1, [sp, #16]
+ldr w1, [sp]
 mul w0, w0, w1
 ```
 

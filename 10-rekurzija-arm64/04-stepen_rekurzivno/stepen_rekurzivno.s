@@ -6,11 +6,12 @@
 // unsigned stepen_rekurzivno(unsigned a, unsigned n)
 //  w0                        w0          w1
 stepen_rekurzivno:
-    stp fp, lr, [sp, #-32]!
+    stp fp, lr, [sp, #-16]!
     mov fp, sp
+    sub sp, sp, #16
 
-    str w0, [sp, #16]      // a
-    str w1, [sp, #20]      // n
+    str w0, [sp]           // a
+    str w1, [sp, #4]       // n
 
     cmp w1, #0
     b.ne rekurzivni_slucaj
@@ -24,13 +25,14 @@ rekurzivni_slucaj:
 
     mul w0, w0, w0         // p * p, gde je p = a^(n / 2)
 
-    ldr w1, [sp, #20]
+    ldr w1, [sp, #4]
     tst w1, #1
     b.eq kraj
 
-    ldr w1, [sp, #16]
+    ldr w1, [sp]
     mul w0, w0, w1         // a * p * p kada je n neparan
 
 kraj:
-    ldp fp, lr, [sp], #32
+    mov sp, fp
+    ldp fp, lr, [sp], #16
     ret

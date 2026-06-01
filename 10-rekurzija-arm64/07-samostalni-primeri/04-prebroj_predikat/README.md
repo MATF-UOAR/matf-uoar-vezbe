@@ -35,18 +35,18 @@ int prebroj_predikat(unsigned *a, int n, int (*pred)(unsigned)) {
 погодака мора да остане у стек оквиру:
 
 ```asm
-str x0, [sp, #16]
-str x2, [sp, #24]
-str w1, [sp, #32]
-str wzr, [sp, #36]
-str wzr, [sp, #40]
+str x0, [sp]
+str x2, [sp, #8]
+str w1, [sp, #16]
+str wzr, [sp, #20]
+str wzr, [sp, #24]
 ```
 
 За сваки елемент ради се исти индиректан позив:
 
 ```asm
 ldr w0, [x4, w3, sxtw #2]
-ldr x8, [sp, #24]
+ldr x8, [sp, #8]
 blr x8
 ```
 
