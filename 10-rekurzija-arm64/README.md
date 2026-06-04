@@ -78,3 +78,4 @@ ret
 
 - Претходно: [Недеља 9](../09-nizovi-arm64/README.md)
 - Следеће: [Најчешће слово](./01-najcesce_slovo/README.md)
+- Наредно вежбање: [Недеља 11](../11-vezbanje-arm64/README.md)
