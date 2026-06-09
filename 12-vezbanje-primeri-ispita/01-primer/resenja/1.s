@@ -22,7 +22,7 @@ for_loop:
         mov r11d, 0   # r11d - odd_count
     petlja:
         cqo
-        idiv r10d  # rax - num / 10   rdx - num % 10
+        idiv r10  # rax - num / 10   rdx - num % 10
 
         test rdx, 1 # testiramo parnost bitovskom konjukcijom sa 1
         jz paran
