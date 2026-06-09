@@ -1,0 +1,1 @@
+// int broj_u_opsegu(unsigned long *a, int n, unsigned long l, unsigned long d);

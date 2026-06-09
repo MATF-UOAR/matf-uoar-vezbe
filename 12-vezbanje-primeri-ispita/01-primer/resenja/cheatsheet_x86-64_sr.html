@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="sr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>x86-64 Cheatsheet</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .header p {
+      font-size: 1.1em;
+      opacity: 0.9;
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+    }
+
+    .section h2 {
+      font-size: 1.8em;
+      color: #d68910;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #d68910;
+    }
+
+    .section h3 {
+      font-size: 1.3em;
+      color: #e67e22;
+      margin-top: 20px;
+      margin-bottom: 15px;
+    }
+
+    .box {
+      background: #f8f9fa;
+      border-left: 4px solid;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .box.registers {
+      border-left-color: #d68910;
+    }
+
+    .box.memory {
+      border-left-color: #2ecc71;
+    }
+
+    .box.arithmetic {
+      border-left-color: #f39c12;
+    }
+
+    .box.flags {
+      border-left-color: #9b59b6;
+    }
+
+    .box.jumps {
+      border-left-color: #e74c3c;
+    }
+
+    .box.calling {
+      border-left-color: #3498db;
+    }
+
+    .box.compilation {
+      border-left-color: #16a085;
+    }
+
+    .box h4 {
+      color: #333;
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+
+    .box ul,
+    .box ol {
+      margin-left: 20px;
+    }
+
+    .box li {
+      margin-bottom: 12px;
+      padding-left: 5px;
+    }
+
+    code {
+      background: #ecf0f1;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      color: #c0392b;
+      font-weight: 500;
+    }
+
+    .code-block {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 20px;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 15px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    .code-block code {
+      background: none;
+      padding: 0;
+      color: inherit;
+      display: block;
+      white-space: pre;
+    }
+
+    .register-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin: 15px 0;
+    }
+
+    .register-item {
+      background: #ecf0f1;
+      padding: 12px;
+      border-radius: 5px;
+      border-left: 4px solid #d68910;
+    }
+
+    .register-item strong {
+      color: #d68910;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+
+    table th,
+    table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+      background: #d68910;
+      color: white;
+      font-weight: 600;
+    }
+
+    table tr:hover {
+      background: #f5f5f5;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin: 15px 0;
+    }
+
+    .footer {
+      background: #f8f9fa;
+      padding: 20px 40px;
+      text-align: center;
+      color: #666;
+      font-size: 0.9em;
+      border-top: 1px solid #ddd;
+    }
+
+    @media (max-width: 768px) {
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .header h1 {
+        font-size: 1.8em;
+      }
+
+      .content {
+        padding: 20px;
+      }
+
+      .section h2 {
+        font-size: 1.4em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🖥️ x86-64 Cheatsheet</h1>
+    </div>
+
+    <div class="content">
+      <!-- Генерални регистри -->
+      <div class="section">
+        <h2>Генерални регистри</h2>
+        <div class="box registers">
+          <h4>64-битни регистри</h4>
+          <div class="register-group">
+            <div class="register-item">
+              <strong>RAX, RBX, RCX, RDX, RDI, RSI, RBP, RSP, R8, R9, R10, ...,
+                R15</strong><br>
+              Регистри опште намене
+            </div>
+            <div class="register-item">
+              <strong>RIP</strong><br>
+              Показивач инструкција (адреса текуће инструкције)
+            </div>
+          </div>
+
+          <h3>Делови регистара</h3>
+          <ul>
+            <li><strong>EAX, AX, AL</strong> — Доњих 32/16/8 бита од RAX</li>
+            <li><strong>EDI, DI, DIL</strong> — Доњих 32/16/8 бита од RDI</li>
+            <li><strong>R8D, R8W, R8B</strong> — Доњих 32/16/8 бита од R8</li>
+            <li><strong>RSP</strong> — Показивач врха стека</li>
+            <li><strong>RBP</strong> — Показивач почетка (базе) стека</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Приступ меморији -->
+      <div class="section">
+        <h2>Приступ меморији</h2>
+        <div class="box memory">
+          <h4>Основне инструкције</h4>
+          <ul>
+            <li><code>MOV RAX, [RBX]</code> — Учитај 64-битну вредност
+              са адресе из RBX у RAX</li>
+            <li><code>MOV [RBX], EAX</code> — Сачувај 32-битну вредност
+              из EAX на адресу у RBX</li>
+            <li><code>LEA RAX, [RBX+4*RCX]</code> — Учитај адресу RBX +
+              4*RCX у RAX</li>
+          </ul>
+
+          <h3>Режим адресирања</h3>
+          <p><code>[base + index*scale + offset]</code></p>
+          <ul>
+            <li><strong>base</strong> — Базни регистар (RAX, RBX, итд.)</li>
+            <li><strong>index</strong> — Индекс регистар (не може бити RSP)</li>
+            <li><strong>scale</strong> — Множилац индекса (1, 2, 4, или 8)</li>
+            <li><strong>offset</strong> — Константа</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Аритметика -->
+      <div class="section">
+        <h2>Аритметика и битовске операције</h2>
+        <div class="box arithmetic">
+          <h4>Аритметичке инструкције</h4>
+          <ul>
+            <li><code>ADD RAX, RBX</code> — сабирање:
+              <code>RAX = RAX + RBX</code>
+            </li>
+            <li><code>SUB RAX, RBX</code> — одузимање:
+              <code>RAX = RAX - RBX</code>
+            </li>
+            <li><code>IDIV, DIV RDI</code> — означено и неозначено дељење:
+              <code>RAX = RDX:RAX / RDI</code>
+              (количник у
+              RAX), <code>RDX = RDX:RAX % RDI</code> (остатак у RDX)
+            </li>
+            <li><code>IMUL, MUL RDI</code> — означено и неозначено множење:
+              <code>RDX:RAX = RAX * RDI</code>
+            </li>
+            <li><code>INC, DEC</code> — Повећај / смањи за 1</li>
+          </ul>
+
+          <h3>Битовске операције</h3>
+          <ul>
+            <li><code>AND, OR, XOR, NOT</code> — Битовске операције</li>
+            <li><code>SHL, SHR, SAR, ROL, ROR</code> — Померања и ротације</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Заставице -->
+      <div class="section">
+        <h2>Заставице (RFLAGS)</h2>
+        <div class="box flags">
+          <h4>Важне заставице</h4>
+          <div class="register-group">
+            <div class="register-item">
+              <strong>CF</strong><br>
+              Неозначено прекорачење
+            </div>
+            <div class="register-item">
+              <strong>PF</strong><br>
+              Парност
+            </div>
+            <div class="register-item">
+              <strong>ZF</strong><br>
+              Нула
+            </div>
+            <div class="register-item">
+              <strong>SF</strong><br>
+              Знак
+            </div>
+            <div class="register-item">
+              <strong>OF</strong><br>
+              Означено прекорачење
+            </div>
+          </div>
+
+          <h3>Инструкције које постављају заставице</h3>
+          <p><code>CMP</code> (упоређивање),
+            <code>TEST</code> (битовски тест), архметичке и битовске инструкције
+            (ADD, SUB, AND, итд.)
+          </p>
+        </div>
+      </div>
+
+      <!-- Скокови -->
+      <div class="section">
+        <h2>Скокови и гранање</h2>
+        <div class="box jumps">
+          <h4>Основни скокови</h4>
+          <ul>
+            <li><code>JMP label</code> — Безусловни скок</li>
+            <li><code>CALL label</code> — Позив функције</li>
+            <li><code>RET</code> — Повратак из функције</li>
+          </ul>
+
+          <h3>Условни скокови</h3>
+          <ul>
+            <li><code>JE/JZ, JNE/JNZ</code> — Једнако/нула, није једнако/није
+              нула</li>
+            <li><code>JL, JG, JLE, JGE</code> - За означена поређења</li>
+            <li><code>JB, JA, JBE, JAE</code> — За неозначена поређења</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Конвенција за позив функција -->
+      <div class="section">
+        <h2>Конвенција за позив функција (x86-64 ABI)</h2>
+        <div class="box calling">
+          <h4>Регистри за аргументе и повратну вредност</h4>
+          <div class="register-group">
+            <div class="register-item">
+              <strong>RDI</strong><br>
+              1. аргумент
+            </div>
+            <div class="register-item">
+              <strong>RSI</strong><br>
+              2. аргумент
+            </div>
+            <div class="register-item">
+              <strong>RDX</strong><br>
+              3. аргумент
+            </div>
+            <div class="register-item">
+              <strong>RCX</strong><br>
+              4. аргумент
+            </div>
+            <div class="register-item">
+              <strong>R8</strong><br>
+              5. аргумент
+            </div>
+            <div class="register-item">
+              <strong>R9</strong><br>
+              6. аргумент
+            </div>
+          </div>
+
+          <h3>Сачувани регистри</h3>
+          <ul>
+            <li><strong>RAX, RCX, RDX, RSI, RDI, R8–R11</strong> — Caller-saved
+              (губе се при позиву)</li>
+            <li><strong>RBX, RBP, R12–R15</strong> — Callee-saved (мора се
+              сачувати функцијом)</li>
+            <li><strong>RAX</strong> — Повратна вредност</li>
+          </ul>
+
+          <h3>Поравнање стека</h3>
+          <p>16-бајтно поравнање пре позива функције (вредност RSP мора бити
+            дељива са 16)</p>
+
+          <h3>Почетак функције</h3>
+          <div class="two-column">
+            <div>
+              <strong>Ручно:</strong>
+              <div class="code-block">
+                <code>PUSH RBP
+MOV RBP, RSP
+SUB RSP, &lt;size&gt;</code>
+              </div>
+            </div>
+            <div>
+              <strong>Аутоматски:</strong>
+              <div class="code-block">
+                <code>ENTER &lt;size&gt;, 0
+
+                </code>
+              </div>
+            </div>
+          </div>
+
+          <h3>Крај функције</h3>
+          <div class="two-column">
+            <div>
+              <strong>Ручно:</strong>
+              <div class="code-block">
+                <code>MOV RSP, RBP
+POP RBP
+RET</code>
+              </div>
+            </div>
+            <div>
+              <strong>Аутоматски:</strong>
+              <div class="code-block">
+                <code>LEAVE
+RET
+
+</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Компилација и дебаговање -->
+      <div class="section">
+        <h2>Компилација и дебаговање</h2>
+        <div class="box compilation">
+          <h3>Компилација</h3>
+          <div class="code-block">
+            <code>g++ file1.cpp file2.s -g -o program</code>
+          </div>
+
+          <h3>Покретање</h3>
+          <div class="code-block">
+            <code>./program</code>
+          </div>
+
+          <h3>Дебаговање са GDB</h3>
+          <div class="code-block">
+            <code>gdb ./program</code>
+          </div>
+
+          <h3>Инструкције дебагера</h3>
+          <ul>
+            <li><code>run</code> — Покрени програм</li>
+            <li><code>b ime_funkcije</code> — Тачка прекида на функцији</li>
+            <li><code>b 0x400123</code> — Тачка прекида на адреси
+              <code>0x400123</code>
+            </li>
+            <li><code>b file.cpp:10</code> — Тачка прекида на линији
+              <code>10</code> у фајлу <code>file.cpp</code>
+            </li>
+            <li><code>next</code> — Следећа инструкција (без уласка у функције)
+            </li>
+            <li><code>step</code> — Следећа инструкција (са уласком у функције)
+            </li>
+            <li><code>continue</code> — Настави до следеће тачке прекида</li>
+            <li><code>print RAX</code> — Прикажи вредност регистра
+              <code>RAX</code></li>
+            <li><code>backtrace</code> — Прикажи стек позива функција</li>
+            <li><code>tui reg general</code> — Прикажи регистре у TUI режиму
+            </li>
+            <li><code>quit</code> — Изађи из дебагера</li>
+          </ul>
+
+          <p style="margin-top: 15px; font-style: italic;">
+            💡 Већина инструкција може да се користи са кратким облицима:
+            <code>b</code> за <code>break</code>, <code>c</code> за
+            <code>continue</code>, итд.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>x86-64 Cheatsheet | Математички факултет | Увод у Организацију и
+        Архитектуру Рачунара (УОАР)</p>
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>
