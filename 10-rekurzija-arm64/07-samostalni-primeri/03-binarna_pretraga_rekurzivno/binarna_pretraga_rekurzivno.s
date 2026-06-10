@@ -16,7 +16,7 @@ binarna_pretraga_rekurzivno:
     asr w4, w4, #1
     add w4, w1, w4       // sredina = levo + (desno - levo) / 2
 
-    ldr w5, [x0, w4, sxtw #2]
+    ldr w5, [x0, x4, lsl #2]
     cmp w5, w3
     b.eq nadjen
     b.lt trazi_desno
