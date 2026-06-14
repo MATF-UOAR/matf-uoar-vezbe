@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Пример испита 2</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #141414;
+    --muted: #666666;
+    --border: #e5e5e5;
+    --accent: #0a6cff;
+    --nav-bg: #f7f8fb;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { min-height: 100%; }
+
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+  }
+
+  header.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: .6rem 1rem;
+  }
+
+  .brandline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .75rem;
+    margin-bottom: .45rem;
+  }
+
+  .brand {
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+
+  .meta {
+    color: var(--muted);
+    font-size: .9rem;
+  }
+
+  nav#TOC {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .4rem;
+  }
+
+  #TOC ul, #TOC ol, #TOC li { display: contents; }
+
+  #TOC a {
+    text-decoration: none;
+    color: #1f2328;
+    padding: .35rem .6rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: #fff;
+    font-weight: 600;
+  }
+
+  #TOC a:hover,
+  #TOC a.active {
+    background: #eef4ff;
+    border-color: #c5d8ff;
+    color: var(--accent);
+  }
+
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1.25rem 1rem 2rem;
+  }
+
+  .task {
+    display: none;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    background: #fff;
+  }
+
+  .task.active { display: block; }
+
+  .primeri {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .primeri .level2 {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: .75rem 1rem;
+    background: #fff;
+  }
+
+  pre {
+    padding: 1rem;
+    background: #f6f8fa;
+    border-radius: 8px;
+    overflow: auto;
+  }
+
+  code {
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body id="top">
+  <header class="topbar" aria-label="Navigacija po zadacima">
+    <div class="topbar-inner">
+      <div class="brandline">
+        <div class="brand">Пример испита 2</div>
+        <div class="meta"></div>
+      </div>
+            <nav id="TOC"><ul>
+<li><a href="#технички-детаљи" id="toc-технички-детаљи">Технички
+детаљи</a></li>
+<li><a href="#задатак-1---x86-64" id="toc-задатак-1---x86-64">Задатак 1
+- x86-64</a></li>
+<li><a href="#задатак-2--x86-64" id="toc-задатак-2--x86-64">Задатак 2 —
+x86-64</a></li>
+<li><a href="#задатак-3--arm64" id="toc-задатак-3--arm64">Задатак 3 —
+ARM64</a></li>
+<li><a href="#задатак-4--arm64" id="toc-задатак-4--arm64">Задатак 4 —
+ARM64</a></li>
+</ul></nav>
+          </div>
+  </header>
+
+  <main id="content">
+    <section id="технички-детаљи" class="level1">
+    <h1>Технички детаљи</h1>
+    <ul>
+    <li>Све задатке сачувати у фолдеру који је направљен на Desktop-у са
+    вашим подацима.</li>
+    <li>У архиви се налазе датотеке <code>1.cpp</code>,
+    <code>2.cpp</code>, <code>3.cpp</code> и <code>4.cpp</code>.</li>
+    <li>Није дозвољено мењати <code>.cpp</code> датотеке.</li>
+    <li>Потребно је направити и имплементирати тражене функције у
+    одговарајућим <code>.s</code> датотекама.</li>
+    <li>У задацима је дозвољено користити претходно имплементиране
+    функције.</li>
+    <li>Унутар <code>.s</code> датотека је дозвољено имплементирати и
+    помоћне функције уколико сматрате да је то потребно.</li>
+    </ul>
+    <section id="напомене" class="level2">
+    <h2>Напомене</h2>
+    <p>Задаци садрже 2 x86-64 асемблерска задатка (задаци 1 и 2) и 2
+    ARM64 асемблерска задатка (задаци 3 и 4).</p>
+    </section>
+    <section id="разни-извори" class="level2">
+    <h2>Разни извори</h2>
+    <ul>
+    <li><a href="./cheatsheet_arm_sr.html" target="_blank">ARM64
+    Cheatsheet</a></li>
+    <li><a href="./cheatsheet_x86-64_sr.html" target="_blank">x86-64
+    Cheatsheet</a></li>
+    </ul>
+    </section>
+    </section>
+    <section id="задатак-1---x86-64" class="level1">
+    <h1>Задатак 1 - x86-64</h1>
+    <p>У датотеци <code>1.s</code> имплементирати функцију:</p>
+    <div class="sourceCode" id="cb1"><pre
+    class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="at">extern</span> <span class="st">&quot;C&quot;</span> <span class="dt">unsigned</span> <span class="dt">long</span> tezina<span class="op">(</span><span class="dt">unsigned</span> <span class="dt">long</span> x<span class="op">);</span></span></code></pre></div>
+    <p>Тежина ненегативног броја је збир квадрата његових децималних
+    цифара. Тежина броја <code>0</code> је <code>0</code>.</p>
+    <p>Датотека <code>1.cpp</code> учитава број <code>x</code>, позива
+    функцију и исписује повратну вредност.</p>
+    <div class="primeri">
+
+    <section id="primer-1" class="level2">
+    <h2>Primer 1</h2>
+    <section id="ulaz" class="level3">
+    <h3>Ulaz:</h3>
+    <pre><code>203</code></pre>
+    </section>
+    <section id="izlaz" class="level3">
+    <h3>Izlaz:</h3>
+    <pre><code>13</code></pre>
+    </section>
+    </section>
+    <section id="primer-2" class="level2">
+    <h2>Primer 2</h2>
+    <section id="ulaz-1" class="level3">
+    <h3>Ulaz:</h3>
+    <pre><code>77</code></pre>
+    </section>
+    <section id="izlaz-1" class="level3">
+    <h3>Izlaz:</h3>
+    <pre><code>98</code></pre>
+    </section>
+    </section>
+    <section id="пример-3" class="level2">
+    <h2>Пример 3</h2>
+    <section id="ulaz-2" class="level3">
+    <h3>Ulaz:</h3>
+    <pre><code>0</code></pre>
+    </section>
+    <section id="izlaz-2" class="level3">
+    <h3>Izlaz:</h3>
+    <pre><code>0</code></pre>
+    </div>
+
+    </section>
+    </section>
+    </section>
+    <section id="задатак-2--x86-64" class="level1">
+    <h1>Задатак 2 — x86-64</h1>
+    <p>Користити функцију <code>tezina</code> из претходног задатка. У
+    датотеци <code>2.s</code> имплементирати функцију:</p>
+    <div class="sourceCode" id="cb8"><pre
+    class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="at">extern</span> <span class="st">&quot;C&quot;</span> <span class="dt">unsigned</span> <span class="dt">long</span> najtezi<span class="op">(</span><span class="dt">unsigned</span> <span class="dt">long</span><span class="op">*</span> a<span class="op">,</span> <span class="dt">int</span> n<span class="op">);</span></span></code></pre></div>
+    <p>Функција прима низ <code>a</code> дужине <code>n</code>. Потребно
+    је проначи и вратити елемент који има <strong>највећу
+    тежину</strong>. Функцију <code>tezina</code> је потребно позвати
+    помоћу инструкције <code>bl</code>.</p>
+    <p>Ако више елемената има исту највећу тежину, враћа се први такв
+    елемент у низу.</p>
+    <p>Ако је <code>n &lt;= 0</code>, функција враћа <code>0</code>.</p>
+    <p>Датотека <code>2.cpp</code> учитава <code>n</code>, затим
+    <code>n</code> бројева у реду, позива функцију и исписује повратну
+    вредност. При превођењу повезати и датотеку <code>1.s</code>.</p>
+    <div class="primeri">
+
+    <section id="primer-1-1" class="level2">
+    <h2>Primer 1</h2>
+    <section id="ulaz-3" class="level3">
+    <h3>Ulaz:</h3>
+    <pre><code>4
+203 77 90 5</code></pre>
+    </section>
+    <section id="izlaz-3" class="level3">
+    <h3>Izlaz:</h3>
+    <pre><code>77</code></pre>
+    </section>
+    </section>
+    <section id="primer-2-1" class="level2">
+    <h2>Primer 2</h2>
+    <section id="ulaz-4" class="level3">
+    <h3>Ulaz:</h3>
+    <pre><code>3
+1 9 3</code></pre>
+    </section>
+    <section id="izlaz-4" class="level3">
+    <h3>Izlaz:</h3>
+    <pre><code>9</code></pre>
+    </section>
+    </section>
+    <section id="primer-3" class="level2">
+    <h2>Primer 3</h2>
+    <section id="ulaz-5" class="level3">
+    <h3>Ulaz:</h3>
+    <pre><code>5
+10 20 30 40 50</code></pre>
+    </section>
+    <section id="izlaz-5" class="level3">
+    <h3>Izlaz:</h3>
+    <pre><code>50</code></pre>
+    </div>
+
+    </section>
+    </section>
+    </section>
+    <section id="задатак-3--arm64" class="level1">
+    <h1>Задатак 3 — ARM64</h1>
+    <p>У датотеци <code>3.s</code> имплементирати функцију:</p>
+    <div class="sourceCode" id="cb15"><pre
+    class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="at">extern</span> <span class="st">&quot;C&quot;</span> <span class="dt">int</span> broj_u_opsegu<span class="op">(</span><span class="dt">unsigned</span> <span class="dt">long</span><span class="op">*</span> a<span class="op">,</span> <span class="dt">int</span> n<span class="op">,</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                             <span class="dt">unsigned</span> <span class="dt">long</span> l<span class="op">,</span> <span class="dt">unsigned</span> <span class="dt">long</span> d<span class="op">);</span></span></code></pre></div>
+    <p>Функција прима низ <code>a</code> дужине <code>n</code> и две
+    границе <code>l</code> и <code>d</code>. Потребно је вратити број
+    елемената који припадаю затвореном интервалу
+    <code>[l, d]</code>.</p>
+    <p>Може се претпоставити да је <code>l &lt;= d</code>.</p>
+    <p>Ако је <code>n &lt;= 0</code>, функција враћа <code>0</code>.</p>
+    <p>Датотека <code>3.cpp</code> учитава <code>n</code>, затим
+    <code>n</code> бројева у реду, затим <code>l</code> и <code>d</code>
+    у истом реду, позива функцију и исписује повратну вредност.</p>
+    <div class="primeri">
+
+    <section id="primer-1-2" class="level2">
+    <h2>Primer 1</h2>
+    <section id="ulaz-6" class="level3">
+    <h3>Ulaz:</h3>
+    <pre><code>6
+3 10 7 15 8 2
+5 10</code></pre>
+    </section>
+    <section id="izlaz-6" class="level3">
+    <h3>Izlaz:</h3>
+    <pre><code>3</code></pre>
+    </section>
+    </section>
+    <section id="primer-2-2" class="level2">
+    <h2>Primer 2</h2>
+    <section id="ulaz-7" class="level3">
+    <h3>Ulaz:</h3>
+    <pre><code>4
+1 2 3 4
+2 3</code></pre>
+    </section>
+    <section id="izlaz-7" class="level3">
+    <h3>Izlaz:</h3>
+    <pre><code>2</code></pre>
+    </section>
+    </section>
+    <section id="primer-3-1" class="level2">
+    <h2>Primer 3</h2>
+    <section id="ulaz-8" class="level3">
+    <h3>Ulaz:</h3>
+    <pre><code>3
+5 10 15
+0 100</code></pre>
+    </section>
+    <section id="izlaz-8" class="level3">
+    <h3>Izlaz:</h3>
+    <pre><code>3</code></pre>
+    </div>
+
+    </section>
+    </section>
+    </section>
+    <section id="задатак-4--arm64" class="level1">
+    <h1>Задатак 4 — ARM64</h1>
+    <p>Дате су помоћне функције (имплементиране у
+    <code>4.cpp</code>):</p>
+    <div class="sourceCode" id="cb22"><pre
+    class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="at">extern</span> <span class="st">&quot;C&quot;</span> <span class="dt">void</span> statistika<span class="op">(</span><span class="dt">unsigned</span> <span class="dt">long</span><span class="op">*</span> a<span class="op">,</span> <span class="dt">int</span> n<span class="op">,</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                           <span class="dt">unsigned</span> <span class="dt">long</span><span class="op">*</span> pmean<span class="op">,</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                           <span class="dt">unsigned</span> <span class="dt">long</span><span class="op">*</span> pmedian<span class="op">);</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="at">extern</span> <span class="st">&quot;C&quot;</span> <span class="dt">int</span> broj_u_opsegu<span class="op">(</span><span class="dt">unsigned</span> <span class="dt">long</span><span class="op">*</span> a<span class="op">,</span> <span class="dt">int</span> n<span class="op">,</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>                             <span class="dt">unsigned</span> <span class="dt">long</span> l<span class="op">,</span> <span class="dt">unsigned</span> <span class="dt">long</span> d<span class="op">);</span></span></code></pre></div>
+    <p>Функција <code>statistika</code> за низ <code>a</code> дужине
+    <code>n &gt; 0</code> уписује целобројну аритметичку средину на
+    адресу <code>pmean</code> и медијану на адреси
+    <code>pmedian</code>.</p>
+    <p>У датотеци <code>4.s</code> имплементирати функцију:</p>
+    <div class="sourceCode" id="cb23"><pre
+    class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="at">extern</span> <span class="st">&quot;C&quot;</span> <span class="dt">int</span> broj_tipicnih<span class="op">(</span><span class="dt">unsigned</span> <span class="dt">long</span><span class="op">*</span> a<span class="op">,</span> <span class="dt">int</span> n<span class="op">);</span></span></code></pre></div>
+    <p>Функција преброји колико елемената низа се налази измеѓу
+    аритметичке средине и медијане (уключујући границе). За бројање
+    користити функцију <code>broj_u_opsegu</code>. Променљиве за средину
+    и медијану морају бити локалне променљиве на стеку. Није дозвољено
+    користити глобалне променљиве.</p>
+    <p>Ако је <code>n &lt;= 0</code>, функција враћа <code>0</code>.</p>
+    <p>Датотека <code>4.cpp</code> учитава <code>n</code>, затим
+    <code>n</code> бројева у реду, позива функцију и исписује повратну
+    вредност. При превођењу повезати и датотеку <code>3.s</code>.</p>
+    <div class="primeri">
+
+    <section id="primer-1-3" class="level2">
+    <h2>Primer 1</h2>
+    <section id="ulaz-9" class="level3">
+    <h3>Ulaz:</h3>
+    <pre><code>5
+2 4 6 8 20</code></pre>
+    </section>
+    <section id="izlaz-9" class="level3">
+    <h3>Izlaz:</h3>
+    <pre><code>2</code></pre>
+    </section>
+    </section>
+    <section id="primer-2-3" class="level2">
+    <h2>Primer 2</h2>
+    <section id="ulaz-10" class="level3">
+    <h3>Ulaz:</h3>
+    <pre><code>4
+1 3 5 7</code></pre>
+    </section>
+    <section id="izlaz-10" class="level3">
+    <h3>Izlaz:</h3>
+    <pre><code>1</code></pre>
+    </section>
+    </section>
+    <section id="primer-3-2" class="level2">
+    <h2>Primer 3</h2>
+    <section id="ulaz-11" class="level3">
+    <h3>Ulaz:</h3>
+    <pre><code>3
+10 20 30</code></pre>
+    </section>
+    <section id="izlaz-11" class="level3">
+    <h3>Izlaz:</h3>
+    <pre><code>1</code></pre>
+    </div>
+
+    </section>
+    </section>
+    </section>
+  </main>
+
+<script>
+(function() {
+  const sections = Array.from(document.querySelectorAll("section.level1"));
+  sections.forEach((section) => section.classList.add("task"));
+
+  function decodeFragment(value) {
+    const raw = (value || "").replace(/^#/, "");
+    try {
+      return decodeURIComponent(raw);
+    } catch (_error) {
+      return raw;
+    }
+  }
+
+  function showFromHash() {
+    let hash = decodeFragment(location.hash);
+    let shown = false;
+
+    sections.forEach((section) => {
+      const active = section.id === hash;
+      section.classList.toggle("active", active);
+      shown = shown || active;
+    });
+
+    if (!shown && sections.length > 0) {
+      hash = sections[0].id;
+      sections[0].classList.add("active");
+      history.replaceState(null, "", "#" + encodeURIComponent(hash));
+    }
+
+    document.querySelectorAll("#TOC a").forEach((link) => {
+      const target = decodeFragment(link.getAttribute("href"));
+      link.classList.toggle("active", target === hash);
+    });
+  }
+
+  showFromHash();
+  window.addEventListener("hashchange", showFromHash);
+})();
+</script>
+</body>
+</html>

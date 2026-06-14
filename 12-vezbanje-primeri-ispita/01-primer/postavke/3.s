@@ -1,0 +1,1 @@
+// int ocisti(char *s);

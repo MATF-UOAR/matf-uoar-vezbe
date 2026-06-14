@@ -23,7 +23,7 @@ petlja:
     b.ge kraj_petlje
 
     ldr x4, [sp]
-    ldr w0, [x4, w3, sxtw #2]
+    ldr w0, [x4, x3, lsl #2]
     ldr x8, [sp, #8]
     blr x8
 
